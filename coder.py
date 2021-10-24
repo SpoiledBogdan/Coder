@@ -44,7 +44,8 @@ def xor_cipher():
     key_list = []
     encode_result = []
     decode_result = []
-
+    
+    # in
     new_key = []
 
     coefficient = int(len(message) / len(key))

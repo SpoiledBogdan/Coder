@@ -1,17 +1,32 @@
 import math
 
 
-def dec_to_bin(dec):
-    string = ''
+def dec_to_bin():
+
+    # validating user input
+    while True:
+        try:
+            dec = int(input("Введите десятичное число: "))
+            string = ''
+            if isinstance(dec, bool):   # if dec is not int
+                raise ValueError
+        except ValueError:
+            print("Введите десятичное число")
+        else:
+            break
+
     while dec >= 1:
         bin_ = math.floor(dec % 2)
         string += str(bin_)
         dec = dec / 2
+
     print(string[::-1])
 
 
 def bin_to_dec():
     dec = 0
+
+    # validating user input
     while True:
         try:
             bin_int = int(input("Введите двоичное число: "))
@@ -44,8 +59,7 @@ def xor_cipher():
     key_list = []
     encode_result = []
     decode_result = []
-    
-    # in
+
     new_key = []
 
     coefficient = int(len(message) / len(key))
@@ -76,4 +90,6 @@ def xor_cipher():
     print("Раскодированное сообщение: ", ''.join(decode_result))
 
 
+dec_to_bin()
+bin_to_dec()
 xor_cipher()

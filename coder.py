@@ -6,12 +6,12 @@ def dec_to_bin():
     # validating user input
     while True:
         try:
-            dec = int(input("Введите десятичное число: "))
+            dec = int(input("Type a dec number: "))
             string = ''
             if isinstance(dec, bool):   # if dec is not int
                 raise ValueError
         except ValueError:
-            print("Введите десятичное число")
+            print("You should type a dec number! ")
         else:
             break
 
@@ -29,14 +29,14 @@ def bin_to_dec():
     # validating user input
     while True:
         try:
-            bin_int = int(input("Введите двоичное число: "))
+            bin_int = int(input("Type a binary number: "))
             bit_list = list(str(bin_int))
 
             for i in list(str(bin_int)):
                 if i != '1' and i != '0':
                     raise ValueError
         except ValueError:
-            print("Введите двоичное число ")
+            print("You should type a binary number! ")
         else:
             break
 
@@ -52,8 +52,8 @@ def bin_to_dec():
 
 
 def xor_cipher():
-    message = list(str(input("Введите сообщение: ")))
-    key = list(str(input("Введите ключ: ")))
+    message = list(str(input("Type a message: ")))
+    key = list(str(input("Type a key: ")))
 
     message_list = []
     key_list = []
@@ -82,14 +82,22 @@ def xor_cipher():
     # encode result
     for i in range(len(message)):
         encode_result.append(int(message_list[i]) ^ int(key_list[i]))
-    print("Закодированное сообщение: ", encode_result)    # I have to print a list of numbers, not an array of numbers
+    print("Encode message: ", encode_result)    # I have to print a list of numbers, not an array of numbers
 
     # decode result
     for i in range(len(encode_result)):
         decode_result.append(chr(encode_result[i] ^ key_list[i]))
-    print("Раскодированное сообщение: ", ''.join(decode_result))
+    print("Decode message: ", ''.join(decode_result))
 
 
-dec_to_bin()
-bin_to_dec()
-xor_cipher()
+while True:
+    char_input = int(input("Enter the number for the command:\n1. Dec to bin\n2. Bin to dec\n3. Xor cipher\n0. Exit\n"))
+    
+    if char_input == 1:
+        dec_to_bin()
+    elif char_input == 2:
+        bin_to_dec()
+    elif char_input == 3:
+        xor_cipher()
+    elif char_input == 0:
+        break
